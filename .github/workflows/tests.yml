@@ -18,3 +18,21 @@ jobs:
         run: pip install -e ".[dev]"
       - name: Run analytic-limit checks
         run: pytest -rs
+
+  cloud-setup:
+    # Mirrors a Claude cloud session: runs the SessionStart setup script on a fresh Ubuntu VM.
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run the cloud session setup script
+        run: CLAUDE_CODE_REMOTE=true CLAUDE_PROJECT_DIR="$PWD" bash scripts/cloud_setup.sh
+      - name: Package is importable and tests run
+        run: python -c "import compneuro" && pytest -q
+      - name: Package installs from GitHub (as the private repo does)
+        run: |
+          python -m venv /tmp/gitinstall
+          /tmp/gitinstall/bin/pip install --quiet "compneuro[dev] @ git+https://github.com/${{ github.repository }}@${{ github.sha }}"
+          /tmp/gitinstall/bin/python -c "import compneuro, compneuro.testing; print('compneuro', compneuro.__version__)"

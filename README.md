@@ -53,6 +53,18 @@ Every function in `src/compneuro/` starts as a stub that raises `NotImplementedE
 
 `tests/test_p0_example.py` is a worked example of the pattern: a model, its analytic solution, and a convergence-order check.
 
+## Working with Claude
+
+[`CLAUDE.md`](CLAUDE.md) sets the rules for any Claude session on this repo: hints rather than solutions, no filling in stubs unless asked, nothing private in this public repo. In a cloud session (claude.ai/code, the Claude app's Code tab, or `claude --cloud`), a startup hook installs the package automatically, and these commands are available:
+
+| Command | What it does |
+| --- | --- |
+| `/derive <note>` | Work through a derivation step by step, with hints; records your steps in the note |
+| `/check <phase>` | Run that phase's checks and explain failures with hints, not fixes |
+| `/quiz [n]` | Spaced-review quiz from `review/cards.md`, logged to `review/history.md` |
+| `/tutor-review <PR>` | Review a pull request against its note and tests; posts hints as a PR comment |
+| `/weekly-review` | Open a GitHub issue with this week's review cards (meant for a scheduled routine) |
+
 ## Licence
 
 Code: [MIT](LICENSE). Notes and other prose: [CC BY 4.0](LICENSE-notes.md).

@@ -1,0 +1,21 @@
+name: compneuro
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - scipy
+  - matplotlib
+  - jupyterlab
+  - pytest
+  - brian2          # Phases 4 and 7
+  - nibabel         # Phases 0, 5, 6 (fMRI)
+  - nilearn         # Phases 0, 5, 6 (fMRI)
+  - pip
+  - pip:
+      - -e .        # this repo as the `compneuro` package
+
+# Add when you reach the phase that needs them:
+#   pip install neuron        # Phases 2 and 5 (NEURON, NetPyNE)
+#   pip install tvb-library   # Phase 5 (The Virtual Brain)
+#   XPPAUT / AUTO              # Phase 3, installed separately

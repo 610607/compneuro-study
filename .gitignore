@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Data never goes in this public repo
+data/
+*.nii
+*.nii.gz
+*.h5
+*.hdf5
+*.mat
+*.npz
+*.pt
+*.ckpt
+
+# NEURON compiled mechanisms
+x86_64/
+arm64/
+*.mod.c
+
+# Figures you regenerate from code (commit the ones you want to keep explicitly)
+figures/tmp/
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/
